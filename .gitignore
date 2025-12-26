@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+
+# Database
+database/app.db
+
+# Environment
+.env
+
+# Mac
+.DS_Store

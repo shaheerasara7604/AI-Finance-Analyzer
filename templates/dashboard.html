@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+    <h2>Dashboard</h2>
+
+    <p><b>Name:</b> {{ user.name }}</p>
+    <p><b>Monthly Income:</b> ₹{{ user.monthly_income }}</p>
+    <p><b>Total Expenses:</b> ₹{{ total }}</p>
+
+    <p><b>Savings:</b> ₹{{ savings }}</p>
+    <p><b>Savings Ratio:</b> {{ ratio }}</p>
+    <p><b>Financial Health:</b> <strong>{{ status }}</strong></p>
+
+    <h3>By Category</h3>
+    <ul>
+        {% for c, amt in categories %}
+            <li>{{ c }} : ₹{{ amt }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- ✅ Plotly Chart -->
+    {% if chart %}
+        <div style="margin-top:20px;">
+            {{ chart | safe }}
+        </div>
+    {% endif %}
+
+    <a href="/upload"><button>Upload Expenses</button></a>
+    <a href="/logout"><button style="background:#ef4444">Logout</button></a>
+</div>
+{% endblock %}
