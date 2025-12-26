@@ -1,8 +1,3 @@
-Absolutely — here is a strong, recruiter-grade README you can copy-paste directly into your README.md.
-This is written the way hiring managers + ATS systems like it: clear, technical, and impact-focused.
-
-⸻
-
 💰 AI-Based Personal Finance Analyzer
 
 An end-to-end, AI-driven personal finance analytics web application that allows users to upload expense data, visualize spending patterns, and predict financial health using Machine Learning.
