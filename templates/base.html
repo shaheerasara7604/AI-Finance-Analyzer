@@ -1,12 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>AI Finance Analyzer</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="container">
+
+<div class="layout">
+
+    <!-- 🔹 Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <h2 class="logo">💰 Finance</h2>
+
+        <nav class="nav">
+            <a href="/dashboard" class="nav-item">📊 Dashboard</a>
+            <a href="/upload" class="nav-item">📤 Upload Expenses</a>
+            <a href="/logout" class="nav-item logout">🚪 Logout</a>
+        </nav>
+    </aside>
+
+    <!-- 🔹 Main Content -->
+    <main class="main-content">
+
+        <!-- ☰ Mobile Menu Button -->
+        <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
         {% block content %}{% endblock %}
-    </div>
+    </main>
+
+</div>
+
+<script>
+function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("show");
+}
+</script>
+
 </body>
 </html>

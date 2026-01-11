@@ -1,31 +1,102 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="card">
-    <h2>Dashboard</h2>
 
-    <p><b>Name:</b> {{ user.name }}</p>
-    <p><b>Monthly Income:</b> ₹{{ user.monthly_income }}</p>
-    <p><b>Total Expenses:</b> ₹{{ total }}</p>
+<div class="dashboard-container">
 
-    <p><b>Savings:</b> ₹{{ savings }}</p>
-    <p><b>Savings Ratio:</b> {{ ratio }}</p>
-    <p><b>Financial Health:</b> <strong>{{ status }}</strong></p>
+    <div class="dashboard-header">
+        <h2>Dashboard</h2>
+        <p class="subtitle">Your financial overview for this month</p>
+    </div>
 
-    <h3>By Category</h3>
-    <ul>
-        {% for c, amt in categories %}
-            <li>{{ c }} : ₹{{ amt }}</li>
-        {% endfor %}
-    </ul>
-
-    <!-- ✅ Plotly Chart -->
-    {% if chart %}
-        <div style="margin-top:20px;">
-            {{ chart | safe }}
+    <!-- Stats -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <p class="stat-title">Monthly Income</p>
+            <h1>₹{{ user.monthly_income }}</h1>
         </div>
+        <div class="stat-card">
+            <p class="stat-title">Total Expenses</p>
+            <h1>₹{{ total }}</h1>
+        </div>
+        <div class="stat-card">
+            <p class="stat-title">Savings</p>
+            <h1>₹{{ savings }}</h1>
+        </div>
+    </div>
+
+    <!-- Health -->
+    <div class="health-card">
+        <p><b>Financial Health</b></p>
+        {% if status == "Healthy" %}
+            <span class="badge green">🟢 Healthy</span>
+        {% elif status == "Risky" %}
+            <span class="badge yellow">🟡 Risky</span>
+        {% else %}
+            <span class="badge red">🔴 Critical</span>
+        {% endif %}
+        <p class="ratio-text">Savings Ratio: {{ ratio }}</p>
+    </div>
+
+    <!-- Insight -->
+    <div class="insight-card">
+        <p class="insight-title">Personalized Insight</p>
+        <p>{{ advice }}</p>
+    </div>
+
+    <!-- Categories -->
+    <h3 class="section-title">Spending by Category</h3>
+    <div class="category-grid">
+        {% for c, amt in categories %}
+            <div class="category-card">
+                <p>{{ c }}</p>
+                <h3>₹{{ amt }}</h3>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Charts -->
+    {% if chart %}
+    <div class="chart-card">
+        <h3>Expense Distribution</h3>
+        {{ chart | safe }}
+    </div>
     {% endif %}
 
-    <a href="/upload"><button>Upload Expenses</button></a>
-    <a href="/logout"><button style="background:#ef4444">Logout</button></a>
+    {% if trend_chart %}
+    <div class="chart-card">
+        <h3>Monthly Expense Trend</h3>
+        {{ trend_chart | safe }}
+        {% if trend_message %}
+            <p style="color:#9ca3af">{{ trend_message }}</p>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Recent Transactions -->
+    <h3 class="section-title">Recent Transactions</h3>
+    <div class="table-card">
+        <table class="transactions-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for exp in recent_expenses %}
+                <tr>
+                    <td>{{ exp.date.strftime('%d %b %Y') }}</td>
+                    <td>{{ exp.category }}</td>
+                    <td>{{ exp.description or "-" }}</td>
+                    <td class="amount">₹{{ exp.amount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
 </div>
+
 {% endblock %}

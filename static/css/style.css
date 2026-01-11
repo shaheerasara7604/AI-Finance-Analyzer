@@ -1,41 +1,296 @@
+/* ---------- Base Theme ---------- */
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f6f8;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    font-family: "Inter", sans-serif;
+    color: #e5e7eb;
+    margin: 0;
+    padding: 0;
 }
 
-.container {
-    width: 400px;
-    margin: 80px auto;
-}
-
-.card {
-    background: white;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-input {
-    width: 100%;
-    padding: 10px;
+h2, h3 {
     margin-bottom: 12px;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    background: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 5px;
+/* ---------- Card Base ---------- */
+
+.card {
+    background: rgba(17, 24, 39, 0.9);
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 1100px;
+    margin: 40px auto;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
 }
 
-a {
+/* ---------- Buttons ---------- */
+
+button {
+    border: none;
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.primary-btn {
+    background: #6366f1;
+    color: white;
+}
+
+.danger-btn {
+    background: #ef4444;
+    color: white;
+}
+
+/* ---------- Dashboard Layout ---------- */
+
+.dashboard-container {
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+.dashboard-header .subtitle {
+    color: #9ca3af;
+    margin-bottom: 25px;
+}
+
+/* ---------- Stats Cards ---------- */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    background: rgba(31, 41, 55, 0.9);
+    padding: 20px;
+    border-radius: 16px;
+}
+
+.stat-title {
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+/* ---------- Health Badge ---------- */
+
+.health-card {
+    margin-top: 25px;
+    padding: 18px;
+    background: rgba(31, 41, 55, 0.9);
+    border-radius: 14px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 6px;
+}
+
+.green {
+    background: #064e3b;
+    color: #6ee7b7;
+}
+
+.yellow {
+    background: #78350f;
+    color: #fde68a;
+}
+
+.red {
+    background: #7f1d1d;
+    color: #fecaca;
+}
+
+.ratio-text {
+    margin-top: 8px;
+    color: #9ca3af;
+}
+
+/* ---------- Insight Card ---------- */
+
+.insight-card {
+    margin-top: 20px;
+    padding: 18px;
+    background: linear-gradient(135deg, #1f2937, #111827);
+    border-radius: 14px;
+}
+
+.insight-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* ---------- Categories ---------- */
+
+.section-title {
+    margin-top: 30px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-top: 15px;
+}
+
+.category-card {
+    background: rgba(31, 41, 55, 0.8);
+    padding: 16px;
+    border-radius: 12px;
+}
+
+/* ---------- Chart ---------- */
+
+.chart-card {
+    margin-top: 30px;
+    background: rgba(17, 24, 39, 0.95);
+    padding: 20px;
+    border-radius: 16px;
+}
+
+/* ---------- Actions ---------- */
+
+.action-buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+/* ---------- Layout ---------- */
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ---------- Sidebar ---------- */
+
+.sidebar {
+    width: 240px;
+    background: rgba(17, 24, 39, 0.95);
+    padding: 25px 20px;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.logo {
+    color: #a5b4fc;
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+
+/* ---------- Navigation ---------- */
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.nav-item {
     text-decoration: none;
-    color: #2563eb;
+    color: #e5e7eb;
+    padding: 12px 14px;
+    border-radius: 10px;
+    transition: background 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(99, 102, 241, 0.15);
+}
+
+.logout {
+    margin-top: 30px;
+    background: rgba(239, 68, 68, 0.15);
+}
+
+.logout:hover {
+    background: rgba(239, 68, 68, 0.3);
+}
+
+/* ---------- Main Content ---------- */
+
+.main-content {
+    flex: 1;
+    padding: 30px 40px;
+}
+/* ---------- Transactions Table ---------- */
+
+.table-card {
+    margin-top: 25px;
+    background: rgba(17, 24, 39, 0.95);
+    padding: 20px;
+    border-radius: 16px;
+    overflow-x: auto;
+}
+
+.transactions-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.transactions-table th,
+.transactions-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.transactions-table th {
+    color: #9ca3af;
+    text-align: left;
+}
+
+.transactions-table tr:hover {
+    background: rgba(99,102,241,0.1);
+}
+
+.transactions-table .amount {
+    font-weight: bold;
+    color: #fca5a5;
+}
+/* ---------- Mobile Sidebar ---------- */
+
+.menu-btn {
+    display: none;
+    background: none;
+    color: #e5e7eb;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+
+    .menu-btn {
+        display: block;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: -260px;
+        top: 0;
+        height: 100vh;
+        z-index: 1000;
+        transition: left 0.3s ease;
+    }
+
+    .sidebar.show {
+        left: 0;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
 }
